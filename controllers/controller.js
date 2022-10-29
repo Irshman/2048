@@ -14,6 +14,4 @@ Controller.prototype.onKeyPress = function(event) {
 Controller.prototype.onClickNewGame = function() {
   this.matrixModel.startNewGame();
   this.summaryModel.nullScore();
-  this.summaryModel.getScore(0)
-  this.summaryModel.getBestScore();
 }

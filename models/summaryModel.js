@@ -2,7 +2,7 @@ function SummaryModel() {
   BaseModel.call(this);
   this.attributes = {
     totalScore: localStorage.getItem('score') || 0,
-    bestScore: localStorage.getItem('bestScore') || 0
+    bestScore: localStorage.getItem('bestScore')
   };
   var instance = this;
   SummaryModel = function() {
@@ -21,11 +21,10 @@ SummaryModel.prototype.getScore = function(result) {
 };
 
 SummaryModel.prototype.getBestScore = function() {
-  var score = this.attributes.totalScore, bestScore = this.attributes.bestScore;
-  if(score < bestScore) {
-    bestScore = window.localStorage.getItem('bestScore');
+  if(this.attributes.totalScore < this.attributes.bestScore) {
+    this.attributes.bestScore = window.localStorage.getItem('bestScore');
   } else {
-    bestScore = score;
+    this.attributes.bestScore = this.attributes.totalScore;
   }
   window.localStorage.setItem('bestScore', this.attributes.bestScore);
   this.publish('changeData');
