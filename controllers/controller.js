@@ -6,10 +6,14 @@ function Controller() {
 Controller.prototype.onKeyPress = function(event) {
   if(this.matrixModel.attributes.startGame) {
     var result = this.matrixModel.playGame(event.code);
-    this.summaryModel.nullScore();
     this.summaryModel.getScore(result);
     this.summaryModel.getBestScore();
   }
+
+  if(event.code === 'Escape') {
+    this.summaryModel.nullScore();
+  }
+
 }
 
 Controller.prototype.onClickNewGame = function() {
