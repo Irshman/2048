@@ -2,7 +2,7 @@ function SummaryModel() {
   BaseModel.call(this);
   this.attributes = {
     totalScore: localStorage.getItem('score') || 0,
-    bestScore: localStorage.getItem('bestScore')
+    bestScore: localStorage.getItem('bestScore') || 0
   };
   var instance = this;
   SummaryModel = function() {
